@@ -1,5 +1,5 @@
 resource "aws_instance" "MyApp_Server" {
-  ami                         = var.ami
+  ami                         = "ami-0149b2da6ceec4bb0"
   instance_type               = var.instance_type
   subnet_id                   = var.subnet_1_id
   availability_zone           = var.avail_zone
@@ -7,7 +7,15 @@ resource "aws_instance" "MyApp_Server" {
   associate_public_ip_address = true
   key_name                    = "EC2 Toturial"
 
-  user_data = file("Entry_Script.sh")
+  user_data = <<EOF
+#!/bin/bash
+sudo apt-get update
+sudo apt-get install -y docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -aG docker ubuntu
+docker run --name=Nginx -p 8080:80 -d nginx:latest 
+EOF
 
   tags = {
     "Name" = "${var.prefix_env}_server"

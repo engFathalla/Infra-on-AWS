@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo yum -y update && sudo yum install docker
+sudo apt -y update && sudo apt install docker-ce
 sudo systemctl start docker 
 sudo systemctl enable docker
 sudo usermod -aG docker ec2-user
