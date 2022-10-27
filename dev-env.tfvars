@@ -1,0 +1,7 @@
+vpc_cidr      = "20.0.0.0/16"
+sub_1         = "20.0.1.0/24"
+region        = "us-east-1"
+avail_zone    = "us-east-1a"
+prefix_env    = "dev"
+ami           = "ami-09d3b3274b6c5d4aa"
+instance_type = "t2.micro"
