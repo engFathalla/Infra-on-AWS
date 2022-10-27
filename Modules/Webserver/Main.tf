@@ -7,7 +7,7 @@ resource "aws_instance" "MyApp_Server" {
   associate_public_ip_address = true
   key_name                    = "EC2 Toturial"
 
-#   user_data = file("Entry_Script.sh")
+  user_data = file("Entry_Script.sh")
 
   tags = {
     "Name" = "${var.prefix_env}_server"
